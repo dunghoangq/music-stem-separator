@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+src/banquet/__init__.py
+src/music_stem_separator.egg-info/PKG-INFO
+src/music_stem_separator.egg-info/SOURCES.txt
+src/music_stem_separator.egg-info/dependency_links.txt
+src/music_stem_separator.egg-info/entry_points.txt
+src/music_stem_separator.egg-info/requires.txt
+src/music_stem_separator.egg-info/top_level.txt

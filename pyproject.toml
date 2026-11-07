@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "music-stem-separator"
+version = "0.1.0"
+description = "A Python project for separating music tracks into individual audio stems (vocals, drums, bass, melody)."
+readme = "README.md"
+authors = [
+    { name = "dunghoangq", email = "dunghoangq@gmail.com" }
+]
+license = { text = "MIT" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Multimedia :: Sound/Audio :: Analysis",
+]
+requires-python = ">=3.9"
+dependencies = [
+    "numpy",
+    "torch"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+]
+
+[project.scripts]
+separate-stems = "stem_separator.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

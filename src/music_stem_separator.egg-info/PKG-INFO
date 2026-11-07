@@ -1,0 +1,61 @@
+Metadata-Version: 2.4
+Name: music-stem-separator
+Version: 0.1.0
+Summary: A Python project for separating music tracks into individual audio stems (vocals, drums, bass, melody).
+Author-email: dunghoangq <dunghoangq@gmail.com>
+License: MIT
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Multimedia :: Sound/Audio :: Analysis
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: torch
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Dynamic: license-file
+
+# Music Stem Separator
+
+## 1. Problem
+
+- Separate music to multiple tracks (more than just 4: drums, bass, vocal, others)
+- Others is harder to split, say guitar, piano may have the same frequency, same timbre.
+
+## 2. Ref Paper
+
+- A Stem-Agnostic Single-Decoder System for Music Source Separation Beyond Four Stems: https://arxiv.org/pdf/2406.18747
+
+
+## 3. Architecture
+
+### 3.1. Archi
+
+![Banquet Architecture](./assets/img/banquet_architecture.png)
+
+- **PaSST**: listens to ref recording and recognises instrument.
+- **FiLM** (Feature-wise Linear Modulation): instructs the separator which characteristics to emphasise.
+
+$$
+h' = \gamma(q) \odot h + \beta(q)
+$$
+
+### 3.1. Configs
+
+| Component | Config |
+|-----------|-------:|
+| Input channels        | 2                 |
+| Frequency bands       | 64                |
+| Embedding dimension   | 128               |
+| FiLM depth            | 2                 |
+| SQM modules           | 8                 |
+| RNN                   | Bidirectional GRU |
+| GRU hidden dimension  | 256               |
+| MLP dimension         | 512               |
+| STFT FFT size         | 2048              |
+| STFT hop length       | 512               |
+| Complex mask          | Enabled           |
+| Sample rate           | 44100 Hz          |
