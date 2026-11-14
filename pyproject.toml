@@ -29,8 +29,5 @@ dev = [
     "pytest",
 ]
 
-[project.scripts]
-separate-stems = "stem_separator.cli:main"
-
 [tool.setuptools.packages.find]
 where = ["src"]
